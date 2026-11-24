@@ -8,6 +8,14 @@ Rota turns place recommendations found in travel articles and pasted post captio
 
 ![Check the locations](images/confirm.webp)
 
+## Key product decisions
+
+1. **Rules-based extraction before any language model.** Rota uses no AI model today. Extraction is rules-based, so there is no API key, no paid model and no account. A language model is considered only if measurement shows a gap it would close.
+2. **The user confirms every location.** A place counts as verified only after the traveller confirms it. Ambiguous branches show options, and the product never invents an address or coordinates.
+3. **Defer accounts and sync.** One active trip lives in the browser with a JSON backup. Accounts and cross-device sync wait for a later phase that needs a server, a privacy notice and legal review.
+
+Details and limits are below.
+
 ## Problem and target user
 
 Recommendations pile up in blog posts, saved posts and notes. Before a trip the traveller has to pull place names out of long text, find the right branch on a map, remember why a place was saved and split the places into days.
