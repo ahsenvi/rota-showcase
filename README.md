@@ -32,6 +32,7 @@ Recommendations pile up in blog posts, saved posts and notes. Before a trip the 
 - **Location step:** single reliable matches are placed automatically, ambiguous branches show options, and unmatched places are shown as not found, not hidden.
 - **Discover mode** for travellers with no plan yet: place suggestions from Wikivoyage guides with attribution (CC BY-SA 4.0).
 - **Editable day plan** for 1 to 7 days with estimated arrival and leave times from a departure time. Remove a stop (with undo), delete a place, add one to a day, or drag stops between days; keyboard buttons do the same.
+- **Turkish place names:** case suffixes after a name ("Müzesi'ni", "Tepesi'nde") no longer end up in the candidate, museum, mosque and hill match their English equivalents, and the target city's own name is never a candidate. Tested with fixtures for four Turkish cities.
 - **Today view**, a map, Google Maps day links, KML for Google My Maps and a JSON backup.
 - **Installable and offline:** add it to the home screen; after one online visit the last trip and plan open without a connection (map tiles and import still need a network). On Android the installed app takes a shared link or text from the share menu.
 - **First run:** a skippable three-step introduction and a backup reminder, because the trip lives only in the browser.
@@ -74,12 +75,13 @@ TypeScript, Next.js (vinext), React 19, Leaflet, Mozilla Readability, Zod and dr
 
 ## How it is built
 
-The owner decides scope, cost and release. Claude Code agents do the planning, implementation, code review and a browser walkthrough of the running app through GitHub issues, task branches and draft pull requests. They are started by GitHub events and a daily schedule, not by a continuous loop. The walkthrough and product-manager roles were specified on 25 November 2026 and have not run yet. Details and the flow diagram: [agent-based development](https://github.com/ahsenvi/product-decision-assistant-showcase/blob/main/docs/agent-based-development.md).
+The owner decides scope, cost and release. Claude Code agents do the planning, implementation, code review and a browser walkthrough of the running app through GitHub issues, task branches and draft pull requests. They are started by GitHub events and a daily schedule, not by a continuous loop. The walkthrough and product-manager roles first ran on 25 and 26 November 2026: a first full walkthrough of the app filed 12 issues, two of them basic defects that were fixed and merged the next day. Weekly feature proposals have not run yet. Details and the flow diagram: [agent-based development](https://github.com/ahsenvi/product-decision-assistant-showcase/blob/main/docs/agent-based-development.md).
 
 ## Limits and next steps
 
 - Extraction can miss names or suggest non-places, so review is required.
 - A slow map service can leave an import partial.
+- The Turkish object suffix "-yi/-yı" ("Ayasofya'yı") is not stripped yet, and the Turkish matching tests use fixtures with invented coordinates, so matching in those cities is not measured against the live service.
 - Installation, offline use and the Android share menu have been tested in a headless browser, not on a real phone. iOS has no share-menu import.
 - One trip per browser, with no sync.
 - **Not built:** photo upload, memory journal, account connection, publishing to social media, multiple trips. They are on the roadmap and not shown as working.
